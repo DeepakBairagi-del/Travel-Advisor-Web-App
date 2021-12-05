@@ -7,12 +7,12 @@ function List({places, childClicked, isLoading, type, rating, setRating,setType}
     const classes = useStyles();
 
     
-    console.log({childClicked});
+  
     const [elRef, setElRef]= useState([]);
     useEffect(()=>{
        setElRef((refs) => Array(places?.length).fill().map((_, i)=> elRef[i] || createRef()));
         
-       console.log(elRef);
+       
     },[places])
     
     return (
