@@ -37,7 +37,7 @@ function Map({setCoordinates, setBounds, coordinates, places, setChildClicked, w
                     >
                         {
                             !isDesktop ? (
-                                <LocationOnOutlinedIcon color="primary" fontSize="large" />
+                                <LocationOnOutlinedIcon color="secondary" fontSize="large" />
                             ) : (
                                 <Paper elevation={3} className={classes.paper}>
                                     <Typography className={classes.Typography} variant="subtitle2" gutterBottom>

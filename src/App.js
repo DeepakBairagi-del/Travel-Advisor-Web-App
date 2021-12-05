@@ -19,7 +19,7 @@ function App() {
     const [isLoading, setIsLoading]= useState(false);
     const [type,setType] =useState('restaurants');
     const [rating,setRating]=useState(0);
-
+    
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(({coords:{latitude, longitude}}) => {
             setCoordinates({lat: latitude, lng: longitude});
@@ -29,7 +29,7 @@ function App() {
     useEffect(() => {
         
         const filteredPlaces= places?.filter((place) => Number(place.rating) > rating);
-        console.log(filteredPlaces);
+       
         setFilteredPlaces(filteredPlaces);
     },[rating])
 
@@ -44,12 +44,12 @@ function App() {
             });
         getPlaceData(type, bounds.sw, bounds.ne)
             .then((data) => {
-                console.log(data.filter((place)=> place.name && place.num_reviews > 0 ));
-                setPlaces(data);
+                
+                setPlaces(data?.filter((place) => Number(place.num_reviews) > 0));
                 setFilteredPlaces([]);
                 setIsLoading(false);
                 setRating('');
-                console.log(places);
+                
             });
         }
        },[type, bounds]);

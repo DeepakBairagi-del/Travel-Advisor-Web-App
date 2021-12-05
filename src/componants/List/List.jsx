@@ -5,12 +5,14 @@ import PlaceDetails from '../PlaceDetails/PlaceDetails'
 
 function List({places, childClicked, isLoading, type, rating, setRating,setType}) {
     const classes = useStyles();
+
     
+    console.log({childClicked});
     const [elRef, setElRef]= useState([]);
     useEffect(()=>{
-       setElRef((refs) => Array(places?.length).fill().map((_,i)=> elRef[i] || createRef()));
-
-       
+       setElRef((refs) => Array(places?.length).fill().map((_, i)=> elRef[i] || createRef()));
+        
+       console.log(elRef);
     },[places])
     
     return (
@@ -44,7 +46,7 @@ function List({places, childClicked, isLoading, type, rating, setRating,setType}
                
                {places?.map((place,i)=> (
                    
-                   <Grid item key={i} xs = {12}>
+                   <Grid ref={elRef[i]} item key={i} xs = {12}>
                        <PlaceDetails
                        selected={Number(childClicked) === i}
                        place ={place}
